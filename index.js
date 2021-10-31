@@ -4,15 +4,15 @@ const app = express();
 const { MongoClient } = require("mongodb");
 const ObjectId = require("mongodb").ObjectId;
 const port = process.env.PORT || 5000;
+require("dotenv").config();
 
 //middleware
 app.use(cors());
 app.use(express.json());
 
 //user:destinationDB,pass:6Nuc2XPZjAsTsfux
+const uri = `mongodb+srv://${process.env.DB_NAME}:${process.env.DB_PASSWORD}@cluster0.95hki.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 
-const uri =
-  "mongodb+srv://destinationDB:6Nuc2XPZjAsTsfux@cluster0.95hki.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 console.log(uri);
 
 const client = new MongoClient(uri, {
